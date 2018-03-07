@@ -22,7 +22,7 @@ stride = model.stride;
 channel = model.channel;
 saveDir = model.saveDir;
 
-fprintf('This is for model %s ...\n',model.description);
+fprintf('THis is for model %s ...\n',model.description);
    
 epoch = 200;
 for ep = 1:epoch
@@ -54,13 +54,16 @@ for ep = 1:epoch
             shift = zeros([dim(2) dim(1) 3 batch_size channel]);
             for n = 1:batch_size
                 trainInd = order( (batch-1)*batch_size + n);
- 
-                [input,shiftInput,label] = transformation_viewSyn(train,trainInd,dim,channel,stride);   
+
+                %seperately conduct transformation. Keep transformation in a
+                %sequence consistent, but random in diff sequence.    
+                [input,shiftInput,label] = transformation_cpu_half(train,trainInd,dim,channel,stride);   
                 data_(:,:,:,n) = (input);
                 label_(:,:,:,n) = (label);
                 shift(:,:,:,n,:) =(shiftInput);
             end
-
+            %Construct the data from different sequences in a batch
+            %And send them to the net's inputs
             solver.net.blobs('data').set_data(single(data_));
             solver.net.blobs('label').set_data(single(label_));
             for k =1:channel
@@ -72,9 +75,9 @@ for ep = 1:epoch
             iter = solver.iter();   
 
             %save the model
-            if(rem(iter,100)==0)
+            if(rem(iter,10000)==0)
                 fprintf('Saving model for iter %d...\n',iter);
-                solver.net.save([saveDir '/caffemodel/viewSyn_iter_' num2str(iter) '.caffemodel']);
+                solver.net.save([saveDir '/caffemodel/caffemodel_iter_' num2str(iter) '.caffemodel']);
             end  
             
             %Save visual result
@@ -85,7 +88,7 @@ for ep = 1:epoch
 
                 idx = 1;
 
-                h=figure('Visible', 'off');hold on;subplot(1,3,1);imshow(uint8(recover(data(:,:,:,idx))),[]);subplot(1,3,2);imshow(uint8(recover(label(:,:,:,idx))),[]);subplot(1,3,3);imshow(uint8(recover(pred(:,:,:,idx))),[]);
+                h=figure('Visible', 'off');hold on;subplot(1,4,1);subplot(1,3,1);imshow(uint8(recover(data(:,:,:,idx))),[]);subplot(1,3,2);imshow(uint8(recover(label(:,:,:,idx))),[]);subplot(1,3,3);imshow(uint8(recover(pred(:,:,:,idx))),[]);
 
                 saveas(h,strcat(saveDir,'/fig/figure_',num2str(iter),'.png'));
                 clf; clear data label pred;

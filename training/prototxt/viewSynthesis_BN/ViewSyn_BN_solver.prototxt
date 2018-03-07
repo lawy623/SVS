@@ -1,4 +1,4 @@
-net: "./prototxt/viewSynthesis/ViewSyn_train.prototxt"
+net: "./prototxt/viewSynthesis_BN/ViewSyn_BN_train.prototxt"
 # The base learning rate, momentum and the weight decay of the network.
 base_lr: 0.0002
 momentum: 0.9
@@ -10,6 +10,9 @@ stepsize: 80000
 # Display every 5 iterations
 display: 5
 # The maximum number of iterations
-max_iter: 300000
+max_iter: 100000
 # solver mode: CPU or GPU
 solver_mode: GPU
+solver_type: ADAM
+momentum2: 0.999
+delta: 1e-4

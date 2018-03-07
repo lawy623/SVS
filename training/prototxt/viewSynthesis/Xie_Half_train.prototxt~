@@ -1,4 +1,4 @@
-name: "ViewSynthesis_train"
+name: "VGG16_Xie_allKitti_half_64chan_128_long"
 input: "data"
 input_dim: 2
 input_dim: 3
@@ -418,14 +418,6 @@ layer {
     num_output: 64
     pad: 1
     kernel_size: 3
-    weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
 }
 layer {
@@ -451,14 +443,6 @@ layer {
     num_output: 64
     pad: 1
     kernel_size: 3
-    weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
 }
 layer {
@@ -496,14 +480,6 @@ layer {
     num_output: 128
     pad: 1
     kernel_size: 3
-    weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
 }
 layer {
@@ -529,14 +505,6 @@ layer {
     num_output: 128
     pad: 1
     kernel_size: 3
-    weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
 }
 layer {
@@ -573,14 +541,6 @@ layer {
     num_output: 256
     pad: 1
     kernel_size: 3
-    weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
 }
 layer {
@@ -606,14 +566,6 @@ layer {
     num_output: 256
     pad: 1
     kernel_size: 3
-    weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
 }
 layer {
@@ -639,14 +591,6 @@ layer {
     num_output: 256
     pad: 1
     kernel_size: 3
-    weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
 }
 layer {
@@ -683,14 +627,6 @@ layer {
     num_output: 512
     pad: 1
     kernel_size: 3
-    weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
 }
 layer {
@@ -716,14 +652,6 @@ layer {
     num_output: 512
     pad: 1
     kernel_size: 3
-    weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
 }
 layer {
@@ -749,14 +677,6 @@ layer {
     num_output: 512
     pad: 1
     kernel_size: 3
-    weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
 }
 layer {
@@ -793,14 +713,6 @@ layer {
     num_output: 512
     pad: 1
     kernel_size: 3
-    weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
 }
 layer {
@@ -826,14 +738,6 @@ layer {
     num_output: 512
     pad: 1
     kernel_size: 3
-    weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
 }
 layer {
@@ -859,14 +763,6 @@ layer {
     num_output: 512
     pad: 1
     kernel_size: 3
-    weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
 }
 layer {
@@ -968,7 +864,25 @@ layer {
   }
 }
 layer {
-  bottom: "pool1"
+	bottom: "pool1"
+	top: "bn1"
+	name: "bn_pool1"
+	type: "BatchNorm"
+    batch_norm_param {
+		eps: 0.001
+	}
+}
+layer {
+	bottom: "bn1"
+	top: "bn1"
+	name: "scale_pool1"
+	type: "Scale"
+	scale_param {
+		bias_term: true
+	}
+}
+layer {
+  bottom: "bn1"
   top: "conv_bn1"
   name: "conv_bn1"
   type: "Convolution"
@@ -1062,7 +976,25 @@ layer {
   }
 }
 layer {
-  bottom: "pool2"
+	bottom: "pool2"
+	top: "bn2"
+	name: "bn_pool2"
+	type: "BatchNorm"
+    batch_norm_param {
+		eps: 0.001
+	}
+}
+layer {
+	bottom: "bn2"
+	top: "bn2"
+	name: "scale_pool2"
+	type: "Scale"
+	scale_param {
+		bias_term: true
+	}
+}
+layer {
+  bottom: "bn2"
   top: "conv_bn2"
   name: "conv_bn2"
   type: "Convolution"
@@ -1156,7 +1088,25 @@ layer {
   }
 }
 layer {
-  bottom: "pool3"
+	bottom: "pool3"
+	top: "bn3"
+	name: "bn_pool3"
+	type: "BatchNorm"
+    batch_norm_param {
+		eps: 0.001
+	}
+}
+layer {
+	bottom: "bn3"
+	top: "bn3"
+	name: "scale_pool3"
+	type: "Scale"
+	scale_param {
+		bias_term: true
+	}
+}
+layer {
+  bottom: "bn3"
   top: "conv_bn3"
   name: "conv_bn3"
   type: "Convolution"
@@ -1250,7 +1200,25 @@ layer {
   }
 }
 layer {
-  bottom: "pool4"
+	bottom: "pool4"
+	top: "bn4"
+	name: "bn_pool4"
+	type: "BatchNorm"
+    batch_norm_param {
+		eps: 0.001
+	}
+}
+layer {
+	bottom: "bn4"
+	top: "bn4"
+	name: "scale_pool4"
+	type: "Scale"
+	scale_param {
+		bias_term: true
+	}
+}
+layer {
+  bottom: "bn4"
   top: "conv_bn4"
   name: "conv_bn4"
   type: "Convolution"

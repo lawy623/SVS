@@ -8,7 +8,7 @@ trainSets = dir([trainAdd '*.mat']);
       
 param = trainConfig();
         
-model = param.model(2);
+model = param.model(3);
 
 fprintf('Training model %s ...\n',model.description);
 

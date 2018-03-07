@@ -13,3 +13,6 @@ display: 5
 max_iter: 300000
 # solver mode: CPU or GPU
 solver_mode: GPU
+solver_type: ADAM
+momentum2: 0.999
+delta: 1e-4
