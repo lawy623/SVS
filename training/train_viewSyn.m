@@ -72,13 +72,13 @@ for ep = 1:epoch
             iter = solver.iter();   
 
             %save the model
-            if(rem(iter,100)==0)
+            if(rem(iter,10000)==0)
                 fprintf('Saving model for iter %d...\n',iter);
                 solver.net.save([saveDir '/caffemodel/viewSyn_iter_' num2str(iter) '.caffemodel']);
             end  
             
             %Save visual result
-            if(rem(iter,10)==0 || iter == 1 )
+            if(rem(iter,5000)==0 || iter == 1 )
                 data = solver.net.blobs('data').get_data();
                 label = solver.net.blobs('label').get_data();
                 pred = solver.net.blobs('pred_right').get_data();
