@@ -1,0 +1,1 @@
+g++ -O3 -DNDEBUG -o evaluate_scene_flow evaluate_scene_flow.cpp -lpng -I/home/wenxiu/DevelopTools/

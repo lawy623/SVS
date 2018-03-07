@@ -1,0 +1,34 @@
+# Temporary Files
+*~
+
+# Generated Folders and files
+build
+build/
+results/
+training/
+log_train.txt
+.build_release/
+tmp/
+*.so
+*.mexa64
+GPATH
+GRTAGS
+GSYMS
+GTAGS
+
+# Large Files, link to ftp instead
+*.log
+data/
+models/real_time_depth/*mat
+models/real_time_depth/*avi
+models/real_time_depth/*png
+models/real_time_depth/*jpg
+models/fcn.berkeleyvision.org
+*mat
+Makefile.config
+
+examples/
+*pyc
+*debug
+*.caffemodel
+*.solverstate
