@@ -66,11 +66,11 @@ The code is tested on 64 bit Linux (Ubuntu 14.04 LTS). You should also install M
 ### Results
 - Some of our qualitative results are shown here.
 
-<img src="figs/1.pdf" width="1200" height="250" />
+<img src="figs/1.jpg" width="1000" height="1000" />
 
-<img src="figs/2.pdf" width="1200" height="250" />
+<img src="figs/2.jpg" width="1000" height="1000" />
 
-<img src="figs/3.pdf" width="1200" height="250" />
+<img src="figs/3.jpg" width="1000" height="1000" />
 
 ### Citation
 Please cite our paper if you find it useful for your work:
