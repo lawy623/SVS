@@ -39,14 +39,14 @@ The code is tested on 64 bit Linux (Ubuntu 14.04 LTS). You should also install M
    ## To run the training matlab scripts from terminal
    sh prototxt/viewSynthesis/train_ViewSyn.sh   #To trained the view synthesis network
 ```
--  We further remove the Batch Norm layers and obtain a better performance. Rename the trained BN model (in `training/prototxt/viewSynthesis_BN/caffemodel`) mentioned above as `viewSyn_BN.caffemodel`. Or you can directly download ours at \[[GoogleDrive](https://drive.google.com/)|[BaiduPan](https://pan.baidu.com/s/1uK5qWhAzglZS9Fs90IVShg)\] and place it in the correct place. Change `line 11` of `train_viewSyn.m` to be `‘model = param.model(2);’`， and run `train_viewSyn.m` again.
+-  We further remove the Batch Norm layers and obtain a better performance. Rename the trained BN model (in `training/prototxt/viewSynthesis_BN/caffemodel`) mentioned above as `viewSyn_BN.caffemodel`. Or you can directly download ours at \[[GoogleDrive](https://drive.google.com/file/d/1RqH8LTJcGZW8irnWho0kMA9gSQi-6bb-/view?usp=sharing)|[BaiduPan](https://pan.baidu.com/s/1uK5qWhAzglZS9Fs90IVShg)\] and place it in the correct place. Change `line 11` of `train_viewSyn.m` to be `‘model = param.model(2);’`， and run `train_viewSyn.m` again.
 
 #### Stereo Matching Network
 - We do not provide the training code for training this stereo matching network. We follow [CRL](https://github.com/Artifineuro/crl) and use their trained model. Relevant model settings can be found in `training/prototxt/stereo/`. 
 
 #### Single View Stereo Matching - End-to-end finetune.
 - To finetune our svs model, please first download the pretrain models for two sub-networks.
-  Download View Synthesis Network at \[[GoogleDrive](https://drive.google.com)|[BaiduPan](https://pan.baidu.com/s/1R_xUE4zsyhW2QEyz-KynBg)\], and put it under `training/prototxt/viewSynthesis/caffemodel/`.
+  Download View Synthesis Network at \[[GoogleDrive](https://drive.google.com/file/d/1WJqbHt2-kN4gkE14Sfk5Ty2rsU0nimB_/view?usp=sharing)|[BaiduPan](https://pan.baidu.com/s/1R_xUE4zsyhW2QEyz-KynBg)\], and put it under `training/prototxt/viewSynthesis/caffemodel/`.
   Download Stereo Matching Network. You can download the model trained on FlyingThings synthetic dataset at \[[GoogleDrive](https://drive.google.com/file/d/1ItR4KFgKrYuf3elEweES6WPrSNjS3UaH/view?usp=sharing)|[BaiduPan](https://pan.baidu.com/s/1p2onPQSD6Rbm98Q-XQtzdg)\], and a model further finetuned on Kitti Stereo 2015 at \[[GoogleDrive](https://drive.google.com/file/d/1vo3Yw7e0QATinfmkOuvm7MY18eLy2vQk/view?usp=sharing)|[BaiduPan](https://pan.baidu.com/s/1crBgBXwz8YdxK8jju2S26A)\]. Put the downloaded models under `training/prototxt/stereo/caffemodel/`
 - Go to `training/` to run `train_svs.m`. You can also run the matlab scripts from terminal at directory `training/` by following commands.  
 ```Shell
@@ -56,7 +56,7 @@ The code is tested on 64 bit Linux (Ubuntu 14.04 LTS). You should also install M
   
 ### Testing
 - Downloads the Eigen test file at \[[GoogleDrive](https://drive.google.com/file/d/1LLb0-SEkPzI1TDy5BsmzTBQu0ggkc9ZH/view?usp=sharing)|[BaiduPan](https://pan.baidu.com/s/1h3eXqFhmcVhlV4Jbs4BIYQ)\]. Put this test .mat file in `/data/testing/`. Or you can follow the data preparation step mentioned above.
- Download svs model at \[[GoogleDrive](https://drive.google.com)|[BaiduPan](https://pan.baidu.com/s/1Er0I27-4tXqYCuesW2DwLw)\], and put it under `training/prototxt/svs/caffemodel/`.
+ Download svs model at \[[GoogleDrive](https://drive.google.com/file/d/13kIMi2NghvUwdDkC1Z9WhI7J7uZG7Asr/view?usp=sharing)|[BaiduPan](https://pan.baidu.com/s/1Er0I27-4tXqYCuesW2DwLw)\], and put it under `training/prototxt/svs/caffemodel/`.
 - Go to directory `testing/`.
   Run `test_svs.m` to get the result before finetune. Please make sure to have downloaded the trained View Synthesis Network and Stereo Matching Network.
   Run `test_svs_end2end.m` to get our state-of-the-art result on monocular depth estimation.
