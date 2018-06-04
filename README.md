@@ -75,10 +75,10 @@ The code is tested on 64 bit Linux (Ubuntu 14.04 LTS). You should also install M
 ### Citation
 Please cite our paper if you find it useful for your work:
 ```
-@article{Luo2018SVS,
+@InProceedings{Luo2018SVS,
     title={Single View Stereo Matching},
     author={Yue Luo, Jimmy Ren, Mude Lin, Jiahao Pang, Wenxiu Sun, Hongsheng Li, Liang Lin},
-    journal={arXiv preprint arXiv: 1803.02612},
+    booktitle ={CVPR},
     year={2018},
 }
 
