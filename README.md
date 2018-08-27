@@ -72,7 +72,7 @@ The code is tested on 64 bit Linux (Ubuntu 14.04 LTS). You should also install M
 
 <img src="figs/3.jpg" width="1000" height="1000" />
 
-- We provide the quantative results on KITTI Eigen Test Set (697 imgs). Download it [here](https://drive.google.com/file/d/1IBUU7qj9yZ0QybKwG3ETfsFm96q_Ibax).
+- We provide the quantitative results on KITTI Eigen Test Set (697 imgs). Download it [here](https://drive.google.com/file/d/1IBUU7qj9yZ0QybKwG3ETfsFm96q_Ibax).
 
 ### Citation
 Please cite our paper if you find it useful for your work:
